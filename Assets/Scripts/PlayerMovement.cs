@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float mouseSensitivity = 180;
 
     //float yRotation = 0;
+    float totalRot = 0;
+    Vector3 moveDirection;
 
     Rigidbody playerRigidbody;
     
@@ -16,25 +18,43 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        
+
+        CalculateMovement();
+        CalculateRotation();
+        //Rotate();
+    }
+
+    void FixedUpdate()
+    {
+        ApplyMovement();
+        ApplyRotation();
+    }
+
+    void CalculateMovement()
+    {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = transform.forward * z + transform.right * x;
+        moveDirection = transform.forward * z + transform.right * x;
+    }
+
+    void ApplyMovement()
+    {
         //playerRigidbody.velocity = moveDirection * playerSpeed * Time.deltaTime;
         playerRigidbody.velocity = new Vector3(moveDirection.normalized.x * playerSpeed * Time.deltaTime, playerRigidbody.velocity.y, moveDirection.normalized.z * playerSpeed * Time.deltaTime);
+    }
 
+    void CalculateRotation()
+    {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        //float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        //yRotation -= mouseY;
-        //yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-
-        //transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
-
-        playerRigidbody.transform.Rotate(Vector3.up * mouseX);
+        totalRot += mouseX;
+    }
+    
+    void ApplyRotation()
+    {
+        playerRigidbody.rotation = Quaternion.Euler(0, totalRot, 0);
     }
 }
