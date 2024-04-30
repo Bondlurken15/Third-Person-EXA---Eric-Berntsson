@@ -6,11 +6,17 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 1337;
     [SerializeField] float mouseSensitivity = 180;
+    [SerializeField] float jumpForce = 10;
 
-    //float yRotation = 0;
-    float totalRot = 0;
+    [SerializeField] LayerMask jumpableLayers;
+    [SerializeField] Vector3 groundCheckPosition;
+    [SerializeField] float groundCheckRadius;
+
+    float totalRotX = 0;
+    float totalRotY = 0;
+
+    bool isGrounded;
     Vector3 moveDirection;
-
     Rigidbody playerRigidbody;
     
     void Start()
@@ -24,7 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
         CalculateMovement();
         CalculateRotation();
-        //Rotate();
+
+        isGrounded = Physics.CheckSphere(transform.position + groundCheckPosition, groundCheckRadius, jumpableLayers);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
     }
 
     void FixedUpdate()
@@ -38,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        //moveDirection = Camera.main.transform.forward * z + Camera.main.transform.right * x;
         moveDirection = transform.forward * z + transform.right * x;
     }
 
@@ -50,11 +63,25 @@ public class PlayerMovement : MonoBehaviour
     void CalculateRotation()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        totalRot += mouseX;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        totalRotY += mouseY;
+        totalRotX += mouseX;
     }
     
     void ApplyRotation()
     {
-        playerRigidbody.rotation = Quaternion.Euler(0, totalRot, 0);
+        Camera.main.transform.localRotation = Quaternion.Euler(totalRotY, 0, 0);
+        playerRigidbody.rotation = Quaternion.Euler(0, totalRotX, 0);
+
+    }
+
+    void Jump()
+    {
+        playerRigidbody.velocity += new Vector3(0, jumpForce, 0);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(transform.position + groundCheckPosition, groundCheckRadius);
     }
 }
