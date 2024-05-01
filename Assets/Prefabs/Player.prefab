@@ -106,7 +106,8 @@ GameObject:
   - component: {fileID: 7982314506663971339}
   - component: {fileID: 1029355730872750952}
   - component: {fileID: 5192432648148005480}
-  m_Layer: 0
+  - component: {fileID: 8777921092440373541}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,10 +243,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 1000
-  mouseSensitivity: 180
+  mouseSensitivity: 5
   jumpForce: 10
   jumpableLayers:
     serializedVersion: 2
     m_Bits: 8
   groundCheckPosition: {x: 0, y: -1.3, z: 0}
   groundCheckRadius: 0.25
+--- !u!114 &8777921092440373541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7884790730426648179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbdf7a77ffc9514593d779fb4faa006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ammunition: 100
+  damage: 1
+  weaponRange: 1337
+  ignoreHitMask:
+    serializedVersion: 2
+    m_Bits: 68
