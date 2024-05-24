@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 1337;
-    [SerializeField] float mouseSensitivity = 180;
     [SerializeField] float jumpForce = 10;
 
     [SerializeField] LayerMask jumpableLayers;
     [SerializeField] Vector3 groundCheckPosition;
     [SerializeField] float groundCheckRadius;
-
-    float totalRotX = 0;
-    float totalRotY = 0;
 
     bool isGrounded;
     Vector3 moveDirection;
@@ -29,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         CalculateMovement();
-        CalculateRotation();
 
         isGrounded = Physics.CheckSphere(transform.position + groundCheckPosition, groundCheckRadius, jumpableLayers);
 
@@ -42,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         ApplyMovement();
-        ApplyRotation();
     }
 
     void CalculateMovement()
@@ -58,20 +53,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //playerRigidbody.velocity = moveDirection * playerSpeed * Time.deltaTime;
         playerRigidbody.velocity = new Vector3(moveDirection.normalized.x * playerSpeed * Time.deltaTime, playerRigidbody.velocity.y, moveDirection.normalized.z * playerSpeed * Time.deltaTime);
-    }
-
-    void CalculateRotation()
-    {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-        totalRotY += mouseY;
-        totalRotX += mouseX;
-    }
-    
-    void ApplyRotation()
-    {
-        Camera.main.transform.localRotation = Quaternion.Euler(-totalRotY, 0, 0);
-        playerRigidbody.rotation = Quaternion.Euler(0, totalRotX, 0);
+        if (isGrounded && Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+        {
+            playerRigidbody.velocity = Vector3.zero;
+        }
     }
 
     void Jump()

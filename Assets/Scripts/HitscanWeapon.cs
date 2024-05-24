@@ -6,19 +6,6 @@ public class HitscanWeapon : WeaponBase
 {
     //public ParticleSystem hitParticle;
 
-    public override void Start()
-    {
-        base.Start();
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Fire();
-        }
-    }
-
     public override bool Fire()
     {
         if (!base.Fire())
