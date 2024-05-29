@@ -6,6 +6,7 @@ public enum WeaponState
 {
     Hitscan,
     Bowling,
+    Melee,
     Total
 }
 

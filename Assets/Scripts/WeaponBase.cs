@@ -6,8 +6,8 @@ public class WeaponBase : MonoBehaviour
 {
     public WeaponState weaponType = WeaponState.Total;
     public int Ammunition = 0;
-    public int maxAmmunition = 100;
-    public int damage;
+    //public int maxAmmunition = 100;
+    //public int damage;
     public float weaponRange = 13337;
     public LayerMask ignoreHitMask;
 

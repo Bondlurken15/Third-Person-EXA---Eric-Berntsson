@@ -23,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
         CalculateMovement();
 
         isGrounded = Physics.CheckSphere(transform.position + groundCheckPosition, groundCheckRadius, jumpableLayers);

@@ -147,6 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileObject: {fileID: 6273070183800274396}
-  maxLifetime: 100
-  movementSpeed: 10
+  maxLifetime: 10
+  movementSpeed: 20
   impactDamage: 1
+  bowlingBallObj: {fileID: 11400000, guid: eb8f6ae2f0e07f54cb9f5ff2a0374c56, type: 2}
+  bounceableLayers:
+    serializedVersion: 2
+    m_Bits: 72

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HitscanWeapon : WeaponBase
 {
+    [SerializeField] HitscanValues hitscanObj;
+    
     //public ParticleSystem hitParticle;
 
     public override bool Fire()
@@ -27,7 +29,7 @@ public class HitscanWeapon : WeaponBase
         if (Physics.Raycast(weaponRay, out hit, weaponRange, ~ignoreHitMask))
         {
             Debug.Log(hit.transform.gameObject.layer);
-            
+
             //hitParticle.Play();
             //hitParticle.transform.SetParent(null);
 
@@ -35,11 +37,11 @@ public class HitscanWeapon : WeaponBase
             //hitParticle.transform.forward = hit.normal;
             //hitParticle.transform.Translate(hit.normal.normalized * 0.1f);
 
-            //var tryEnemy = hit.transform.gameObject.GetComponent<DummyEnemy>();
-            //if (tryEnemy != null)
-            //{
-            //    tryEnemy.TakeDamage(damage);
-            //}
+            var tryEnemy = hit.transform.gameObject.GetComponent<EnemyHealth>();
+            if (tryEnemy != null)
+            {
+                tryEnemy.TakeDamage(hitscanObj.hitscanDamage);
+            }
         }
     }
 }

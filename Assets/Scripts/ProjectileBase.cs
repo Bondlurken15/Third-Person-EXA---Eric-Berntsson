@@ -19,9 +19,9 @@ public class ProjectileBase : MonoBehaviour
 
     protected Vector3 aimDirection;
 
-    public float movementSpeed;
+    //public float movementSpeed;
 
-    public int impactDamage;
+    //public int impactDamage;
 
     public void Start()
     {
