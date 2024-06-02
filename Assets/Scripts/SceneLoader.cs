@@ -7,6 +7,8 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] Canvas settingsCanvas;
     [SerializeField] Canvas mainMenuCanvas;
+    [SerializeField] Canvas deathCanvas;
+    [SerializeField] Canvas victoryCanvas;
 
     bool canvasActive = false;
     void Start()
@@ -23,14 +25,8 @@ public class SceneLoader : MonoBehaviour
         {
             ToggleCanvas();
         }
-    }
 
-    public void ToggleCanvas()
-    {
-        canvasActive = !canvasActive;
-        settingsCanvas.gameObject.SetActive(canvasActive);
-
-        if (settingsCanvas.gameObject.activeSelf == true || mainMenuCanvas != null)
+        if (settingsCanvas.gameObject.activeSelf == true || (deathCanvas != null && deathCanvas.gameObject.activeSelf == true) || (victoryCanvas != null && victoryCanvas.gameObject.activeSelf == true) || mainMenuCanvas != null)
         {
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
@@ -41,6 +37,13 @@ public class SceneLoader : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
         }
+    }
+
+    public void ToggleCanvas()
+    {
+        canvasActive = !canvasActive;
+        settingsCanvas.gameObject.SetActive(canvasActive);
+
         Debug.Log("Switched");
         
     }

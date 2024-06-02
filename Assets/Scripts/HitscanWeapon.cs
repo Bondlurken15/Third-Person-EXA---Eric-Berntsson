@@ -5,8 +5,8 @@ using UnityEngine;
 public class HitscanWeapon : WeaponBase
 {
     [SerializeField] HitscanValues hitscanObj;
-    
-    //public ParticleSystem hitParticle;
+
+    public ParticleSystem hitParticle;
 
     public override bool Fire()
     {
@@ -30,12 +30,15 @@ public class HitscanWeapon : WeaponBase
         {
             Debug.Log(hit.transform.gameObject.layer);
 
-            //hitParticle.Play();
-            //hitParticle.transform.SetParent(null);
+            if (hitParticle != null)
+            {
+                hitParticle.Play();
+                hitParticle.transform.SetParent(null);
 
-            //hitParticle.transform.position = hit.point;
-            //hitParticle.transform.forward = hit.normal;
-            //hitParticle.transform.Translate(hit.normal.normalized * 0.1f);
+                hitParticle.transform.position = hit.point;
+                hitParticle.transform.forward = hit.normal;
+                hitParticle.transform.Translate(hit.normal.normalized * 0.1f);
+            }
 
             var tryEnemy = hit.transform.gameObject.GetComponent<EnemyHealth>();
             if (tryEnemy != null)

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] SceneLoader sceneLoader;
+    [SerializeField] Canvas deathCanvas;
     
     [SerializeField] int health = 10;
     
@@ -25,7 +26,12 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            sceneLoader.ReloadScene();
+            Debug.Log("Died");
+            
+            if (deathCanvas != null)
+            {
+                deathCanvas.gameObject.SetActive(true);
+            }
         }
     }
 }

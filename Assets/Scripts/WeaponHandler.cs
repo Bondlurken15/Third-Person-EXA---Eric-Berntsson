@@ -5,8 +5,9 @@ using UnityEngine;
 public enum WeaponState
 {
     Hitscan,
-    Bowling,
+    Bouncing,
     Melee,
+    Lob,
     Total
 }
 

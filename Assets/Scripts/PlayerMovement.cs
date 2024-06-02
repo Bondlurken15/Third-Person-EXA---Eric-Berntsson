@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] MeleeWeapon meleeWeapon;
+
     [SerializeField] float playerSpeed = 1337;
     [SerializeField] float jumpForce = 10;
 
@@ -30,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
+        }
+
+        if (meleeWeapon.comboStarted == true && meleeWeapon != null)
+        {
+            playerRigidbody.velocity = new Vector3(moveDirection.normalized.x * playerSpeed * Time.deltaTime, 0, moveDirection.normalized.z * playerSpeed * Time.deltaTime);
         }
     }
 

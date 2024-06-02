@@ -5,10 +5,10 @@ using UnityEngine;
 public class SettingsManager : MonoBehaviour
 {
     [SerializeField] UnityEngine.UI.Scrollbar sensitivitySlider;
-    [SerializeField] SettingsValues mySettings;
+    [SerializeField] SettingsValues mySettingsObj;
 
     void Update()
     {
-        mySettings.sensitivity = sensitivitySlider.value * mySettings.maxSensitivity;
+        mySettingsObj.sensitivity = sensitivitySlider.value * mySettingsObj.maxSensitivity;
     }
 }

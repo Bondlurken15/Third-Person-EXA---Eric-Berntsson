@@ -6,7 +6,9 @@ using UnityEngine.UIElements;
 
 public class MeleeWeapon : WeaponBase
 {
-    [SerializeField] DifferentMeleeAttacks differentMeleeAttacksObj;
+    [SerializeField] DifferentMeleeAttacks meleeAttack1Obj;
+    [SerializeField] DifferentMeleeAttacks meleeAttack2Obj;
+    [SerializeField] DifferentMeleeAttacks meleeAttack3Obj;
     [SerializeField] Transform playerTransform;
 
     [SerializeField] float timerAtStart = 1;
@@ -14,7 +16,8 @@ public class MeleeWeapon : WeaponBase
 
     float timer;
     int numberOfHits = 0;
-    bool comboStarted = false;
+    
+    public bool comboStarted = false;
 
     public override void Start()
     {
@@ -64,7 +67,7 @@ public class MeleeWeapon : WeaponBase
     {
         Vector3 spawnPosition = transform.position + new Vector3(transform.forward.normalized.x, transform.forward.normalized.y, transform.forward.normalized.z * offsetDistance);
 
-        var go = Instantiate(differentMeleeAttacksObj.meleeAttack1, spawnPosition, differentMeleeAttacksObj.meleeAttack1.transform.rotation);
+        var go = Instantiate(meleeAttack1Obj.meleeAttack, spawnPosition, meleeAttack1Obj.meleeAttack.transform.rotation);
 
         var transformFromStart = go.transform.rotation;
         var rotationEulerFromStart = transformFromStart.eulerAngles;
@@ -83,7 +86,7 @@ public class MeleeWeapon : WeaponBase
     {
         Vector3 spawnPosition = transform.position + new Vector3(transform.forward.normalized.x, transform.forward.normalized.y, transform.forward.normalized.z * offsetDistance);
 
-        var go = Instantiate(differentMeleeAttacksObj.meleeAttack2, spawnPosition, differentMeleeAttacksObj.meleeAttack2.transform.rotation);
+        var go = Instantiate(meleeAttack2Obj.meleeAttack, spawnPosition, meleeAttack2Obj.meleeAttack.transform.rotation);
         
         var transformFromStart = go.transform.rotation;
         var rotationEulerFromStart = transformFromStart.eulerAngles;
@@ -102,7 +105,7 @@ public class MeleeWeapon : WeaponBase
     {
         Vector3 spawnPosition = transform.position + new Vector3(transform.forward.normalized.x, transform.forward.normalized.y, transform.forward.normalized.z * offsetDistance);
 
-        var go = Instantiate(differentMeleeAttacksObj.meleeAttack3, spawnPosition, differentMeleeAttacksObj.meleeAttack3.transform.rotation);
+        var go = Instantiate(meleeAttack3Obj.meleeAttack, spawnPosition, meleeAttack3Obj.meleeAttack.transform.rotation);
 
         var transformFromStart = go.transform.rotation;
         var rotationEulerFromStart = transformFromStart.eulerAngles;

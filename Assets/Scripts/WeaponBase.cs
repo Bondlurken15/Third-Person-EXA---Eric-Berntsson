@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     public WeaponState weaponType = WeaponState.Total;
-    public int Ammunition = 0;
+    public int ammunition = 100;
     //public int maxAmmunition = 100;
     //public int damage;
     public float weaponRange = 13337;
@@ -20,12 +20,12 @@ public class WeaponBase : MonoBehaviour
 
     public virtual bool Fire()
     {
-        if (Ammunition < 1)
+        if (ammunition < 1)
         {
             return false;
         }
 
-        Ammunition--;
+        ammunition--;
         return true;
     }
 }
