@@ -21,7 +21,7 @@ public class BouncingWeapon : WeaponBase
 
         if (currentCoroutine == null && this.gameObject.activeSelf == true)
         {
-            StartCoroutine(SpawnProjectile());
+            currentCoroutine = StartCoroutine(SpawnProjectile());
         }
         else
         {

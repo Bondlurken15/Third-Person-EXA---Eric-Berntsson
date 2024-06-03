@@ -15,7 +15,10 @@ public class HitscanWeapon : WeaponBase
             return false;
         }
 
-        Hitscan();
+        if (this.gameObject.activeSelf == true)
+        {
+            Hitscan();
+        }
 
         return true;
     }

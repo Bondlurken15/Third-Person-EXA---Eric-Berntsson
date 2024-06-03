@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &79543542 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5314232040209361809, guid: c10daedc5fedf0043a8f9a0e5070e16f, type: 3}
+  m_PrefabInstance: {fileID: 1189659607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &255070216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -461,9 +466,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 371381183545105424, guid: 253c9104ceef4794d97cbfb56d23bbac, type: 3}
-      propertyPath: mySettingsObj
+      propertyPath: musicPlayer
       value: 
-      objectReference: {fileID: 11400000, guid: 7355586a7d6a8634e88dda83f9ebcff2, type: 2}
+      objectReference: {fileID: 79543542}
+    - target: {fileID: 371381183545105424, guid: 253c9104ceef4794d97cbfb56d23bbac, type: 3}
+      propertyPath: musicVolumeSlider
+      value: 
+      objectReference: {fileID: 7882235708764938782}
     - target: {fileID: 371381183545105424, guid: 253c9104ceef4794d97cbfb56d23bbac, type: 3}
       propertyPath: sensitivitySlider
       value: 
@@ -1177,21 +1186,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3874967905244897134, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6859865391572312329, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6859865391572312329, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6859865391572312329, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.4
+    - target: {fileID: 6502769369458866500, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
+      propertyPath: m_Name
+      value: ChangeVolume
       objectReference: {fileID: 0}
     - target: {fileID: 7611008882209380740, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1285,6 +1282,17 @@ PrefabInstance:
 --- !u!114 &7882235708764938781 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3320209136382371358, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
+  m_PrefabInstance: {fileID: 7882235708764938780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7882235708764938782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4115158479624781980, guid: 641f32a4eeb5bfe40b8a105fc19f6f07, type: 3}
   m_PrefabInstance: {fileID: 7882235708764938780}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivitySlider: {fileID: 0}
-  mySettings: {fileID: 11400000, guid: 7355586a7d6a8634e88dda83f9ebcff2, type: 2}
+  musicVolumeSlider: {fileID: 0}
+  mySettingsObj: {fileID: 11400000, guid: 7355586a7d6a8634e88dda83f9ebcff2, type: 2}

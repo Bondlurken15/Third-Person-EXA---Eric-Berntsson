@@ -9,4 +9,7 @@ public class SettingsValues : ScriptableObject
 {
     public float sensitivity = 1;
     public float maxSensitivity = 180;
+
+    public float musicVolume;
+    public float maxMusicVolume;
 }
