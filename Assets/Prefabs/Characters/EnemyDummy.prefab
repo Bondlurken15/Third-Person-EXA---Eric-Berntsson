@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTakenText: {fileID: 1775808282557223997}
   hitEffectMaterial: {fileID: 2100000, guid: 91dc545ec19d4a94daa57028cb5e548f, type: 2}
+  blindDuration: 0.1
 --- !u!1 &6256483095917971717
 GameObject:
   m_ObjectHideFlags: 0

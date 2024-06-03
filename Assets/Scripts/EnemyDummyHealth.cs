@@ -8,6 +8,7 @@ public class EnemyDummyHealth : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI damageTakenText;
     [SerializeField] Material hitEffectMaterial;
+    [SerializeField] float blindDuration;
 
     MeshRenderer meshRenderer;
     Material startMaterial;
@@ -40,7 +41,7 @@ public class EnemyDummyHealth : MonoBehaviour
     {
         meshRenderer.material = hitEffectMaterial;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(blindDuration);
 
         meshRenderer.material = startMaterial;
     }
