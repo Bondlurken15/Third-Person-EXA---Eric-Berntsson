@@ -48,6 +48,12 @@ public class HitscanWeapon : WeaponBase
             {
                 tryEnemy.TakeDamage(hitscanObj.hitscanDamage);
             }
+
+            var tryEnemyDummy = hit.transform.gameObject.GetComponent<EnemyDummyHealth>();
+            if (tryEnemyDummy != null)
+            {
+                tryEnemyDummy.DisplayDamage(hitscanObj.hitscanDamage);
+            }
         }
     }
 }

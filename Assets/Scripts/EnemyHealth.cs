@@ -5,16 +5,6 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int health = 10;
-    
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void TakeDamage(int damageToTake)
     {

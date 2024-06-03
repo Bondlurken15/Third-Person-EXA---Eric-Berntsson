@@ -20,6 +20,11 @@ public class LobBall : ProjectileBase
         {
             tryEnemy.TakeDamage(lobBallObj.projectileDamage);
         }
+        var tryEnemyDummy = collision.transform.gameObject.GetComponent<EnemyDummyHealth>();
+        if (tryEnemyDummy != null)
+        {
+            tryEnemyDummy.DisplayDamage(lobBallObj.projectileDamage);
+        }
 
         if (lobBallObj.projectileExplosion != null)
         {

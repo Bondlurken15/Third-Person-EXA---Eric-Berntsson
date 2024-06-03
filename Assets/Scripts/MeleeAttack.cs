@@ -35,5 +35,15 @@ public class MeleeAttack : MonoBehaviour
                 Instantiate(meleeAttackObj.meleeAttackEffect, transform.position, Quaternion.identity);
             }
         }
+        var tryDummyEnemy = other.gameObject.GetComponent<EnemyDummyHealth>();
+        if (tryDummyEnemy != null)
+        {
+            tryDummyEnemy.DisplayDamage(meleeAttackObj.damage);
+
+            if (meleeAttackObj.meleeAttackEffect != null)
+            {
+                Instantiate(meleeAttackObj.meleeAttackEffect, transform.position, Quaternion.identity);
+            }
+        }
     }
 }

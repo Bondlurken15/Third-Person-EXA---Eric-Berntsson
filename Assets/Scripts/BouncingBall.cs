@@ -24,6 +24,11 @@ public class BouncingBall : ProjectileBase
         {
             tryEnemy.TakeDamage(bouncingBallObj.projectileDamage);
         }
+        var tryEnemyDummy = collision.transform.gameObject.GetComponent<EnemyDummyHealth>();
+        if (tryEnemyDummy != null)
+        {
+            tryEnemyDummy.DisplayDamage(bouncingBallObj.projectileDamage);
+        }
 
         if (bouncingBallObj.projectileTravelEffect != null)
         {
